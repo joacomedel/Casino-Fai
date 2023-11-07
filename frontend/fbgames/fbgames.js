@@ -1,4 +1,4 @@
-fetch("http://localhost:8000/juegos").then(response => response.json()).then(param => { postFetch(param) });
+fetch("http://localhost:8000/api/juegos").then(response => response.json()).then(param => { postFetch(param) });
 
 function postFetch(param) {
     //Todo lo q se hace en este js es con datos cargados , asi q esperamos q los obtenga y los cargue

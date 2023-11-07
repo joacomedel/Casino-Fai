@@ -39,7 +39,7 @@ const loadQuestions = () => {
     });
 }
 
-fetch("../faq/faqs.json")
+fetch("http://localhost:8000/api/faq")
     .then(response => response.json())
     .then(
         param => {
