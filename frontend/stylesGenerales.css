@@ -1,0 +1,54 @@
+/*:root {
+    --colorHeader: #91B6C7;
+    --colorLinks: #536872;
+    --colorBackgroundBody: #728F9C;
+    --colorLinkHover: #344147;
+    --colorAll: black;
+}*/
+:root {
+    --colorHeader: #361515ab;
+    --colorLinks: goldenrod;
+    --colorBackgroundBody: radial-gradient(#0B0505, #291010);
+    --colorLinkHover: #E05858;
+    --colorAll: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: var(--colorAll);
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    background: var(--colorBackgroundBody);
+}
+
+body {
+    height: 100%;
+    position: relative;
+}
+
+body::before {
+    background-image: url("./assets/fondo.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 120%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.04;
+    content: "";
+}
+
+.divMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

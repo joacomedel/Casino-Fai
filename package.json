@@ -1,0 +1,8 @@
+{
+  "name": "CasinoFai",
+  "main": "main.js",
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
