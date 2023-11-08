@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 //
 const link = "/faq";
-const pathFile = "../json/faq.json"
+const pathFile = "./json/faq.json"
 
 
 router.get(link, (req, res) => {
