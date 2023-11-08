@@ -1,4 +1,4 @@
-fetch("http://localhost:8000/api/juegos").then(response => response.json()).then(param => { postFetch(param) });
+fetch("http://localhost:8000/api/games").then(response => response.json()).then(param => { postFetch(param) });
 
 function postFetch(param) {
     //Todo lo q se hace en este js es con datos cargados , asi q esperamos q los obtenga y los cargue
@@ -19,9 +19,9 @@ function cargarDatos(arregloJuegos) {
         link.appendChild(img);
         const titulo = document.createElement("h2");
         link.appendChild(titulo);
-        const tituloSinEspacios = juego.titulo.replace(/\s/g, '');
+        const tituloSinEspacios = juego.title.replace(/\s/g, '');
         img.src = "../assets/" + tituloSinEspacios + ".png";
-        titulo.textContent = juego.titulo;
+        titulo.textContent = juego.title;
         link.href = "../game/" + tituloSinEspacios.toLowerCase() + ".html";
     }
 

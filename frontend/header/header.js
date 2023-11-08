@@ -1,5 +1,5 @@
 
-fetch("http://localhost:8000/api/juegos").then(response => response.json()).then(param => cargarHeader(param));
+fetch("http://localhost:8000/api/games").then(response => response.json()).then(param => cargarHeader(param));
 function cargarHeader(arregloJuegos) {
     const lista = document.querySelector('.divJuegosHeader ul');
     arregloJuegos.forEach(juego => {
@@ -7,8 +7,8 @@ function cargarHeader(arregloJuegos) {
         const a = document.createElement("a");
         lista.appendChild(li);
         li.appendChild(a);
-        a.textContent = juego.titulo;
-        const tituloSinEspacios = juego.titulo.replace(/\s/g, '');
+        a.textContent = juego.title;
+        const tituloSinEspacios = juego.title.replace(/\s/g, '');
         a.href = "../game/" + tituloSinEspacios.toLowerCase() + ".html";
     }
     )
