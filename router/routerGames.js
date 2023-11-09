@@ -34,14 +34,39 @@ router.get(link, (req, res) => {
             return;
         }
         try {
-            const game = JSON.parse(data);
-            res.json(game);
+            if (Object.keys(req.query).length === 0) {
+                console.log("noparam");
+                getGamesWithoutParam(req, res, data);
+            } else {
+                console.log("param");
+                getGamesWithParam(req, res, data)
+            }
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Error al analizar el archivo JSON' });
         }
     });
 });
+const getGamesWithParam = (req, res, data) => {
+    const json = JSON.parse(data)
+    let ret = [];
+    let i = req.query.from;
+    const length = json.length;
+    let u = 0;
+    const m = req.query.cant;
+    console.log(json);
+    while (i < length && u < m) {
+        ret.push(json[i]);
+        i++;
+        u++;
+    }
+    res.status(200).json(ret);
+}
+const getGamesWithoutParam = (req, res, data) => {
+    console.log("entro");
+    const game = JSON.parse(data);
+    res.json(game);
+}
 router.post(link, (req, res) => {
     const arrJson = req.body;
     let propNameRight = true;
@@ -126,5 +151,27 @@ router.put(link, (req, res) => {
     }
 
 
+
+
 })
+router.get(link + "/:index", (req, res) => {
+    fs.readFile(pathFile, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error al leer el archivo JSON' });
+            return;
+        }
+        try {
+            const game = JSON.parse(data)[req.params.index];
+            if (game == undefined) {
+                res.status(404).json({ error: 'Error , invalid index ' });
+            } else {
+                res.json(game);
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Error al analizar el archivo JSON' });
+        }
+    });
+});
 module.exports = router;
